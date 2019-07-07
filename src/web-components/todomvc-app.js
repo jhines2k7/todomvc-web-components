@@ -26,14 +26,26 @@ class TodoMvcApp extends HTMLElement {
         });
     }
 
+    uuidv4() {
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+            var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+            return v.toString(16);
+        });
+    }
+
     createNewTodo(event) {
         if(event.code === 'Enter') {
+            let uuid = this.uuidv4();
+
             let input = document.querySelector('section.todoapp header input.new-todo');
 
             this.eventLog.add(this.eventLog.events, [{
                 channel: 'app-msg-bus',
                 topic: 'app.todo.created',
-                data: input.value
+                data: {
+                    id: uuid,
+                    label: input.value
+                }
             }]);
 
             input.value = '';

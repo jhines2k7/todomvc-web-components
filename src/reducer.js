@@ -4,7 +4,8 @@ export default function reduce(events) {
     return events.reduce( (state, event) => {
         if(event.topic === 'app.todo.created') {
             state.todos.push({
-                label: event.data,
+                id: event.data.id,
+                label: event.data.label,
                 status: '',
                 editing: false
             });
@@ -12,6 +13,14 @@ export default function reduce(events) {
 
         if(event.topic === 'app.filter.changed') {
             state.filter = event.data;
+        }
+
+        if(event.topic === 'app.todo.status-change') {
+            state.todos.map((todo) => {
+               if(event.data.id === todo.id) {
+                   todo.status = event.data.status;
+               }
+            });
         }
 
         return state;

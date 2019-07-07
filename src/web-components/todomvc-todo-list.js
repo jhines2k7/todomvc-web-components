@@ -40,7 +40,7 @@ class TodoMvcTodoList extends HTMLElement {
                     todoList = document.querySelector('section.main ul');
 
                     const todoListItem = document.createElement('todomvc-list-item');
-                    todoListItem.todo = todo;
+                    todoListItem.item = todo;
 
                     todoList.appendChild(todoListItem);
                 });
@@ -53,7 +53,7 @@ class TodoMvcTodoList extends HTMLElement {
             const todoList = document.querySelector('section.main ul');
 
             const todoListItem = document.createElement('todomvc-list-item');
-            todoListItem.todo = todo;
+            todoListItem.item = todo;
 
             todoList.appendChild(todoListItem);
         });
