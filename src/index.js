@@ -1,8 +1,9 @@
-import './web-components/todomvc-app';
-import './web-components/todomvc-app-footer';
-import EventLog from './eventLog';
+import './web-components/todomvc-app'
+import './web-components/todomvc-app-footer'
+import EventLog from './eventLog'
 import Storage from './storage'
-import reduce from "./reducer";
+import reduce from "./reducer"
+import './css/main.css'
 
 window.addEventListener('load', () => {
     Storage.get().then( (events) => {
