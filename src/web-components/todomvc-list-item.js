@@ -16,7 +16,7 @@ class TodoMvcListItem extends HTMLElement {
 
         this.eventLog.add(this.eventLog.events, [{
             channel: 'app-msg-bus',
-            topic: 'app.todo.status-change',
+            topic: 'app.todo.status-changed',
             data: {
                 status: this.todo.status,
                 id: this.todo.id
@@ -24,6 +24,16 @@ class TodoMvcListItem extends HTMLElement {
         }]);
 
         this.render(this.todo);
+    }
+
+    deleteTodo(event) {
+       this.eventLog.add(this.eventLog.events, [{
+            channel: 'app-msg-bus',
+            topic: 'app.todo.deleted',
+            data: {
+                id: this.todo.id
+            }
+        }]);
     }
 
     set item(todo) {
@@ -48,6 +58,10 @@ class TodoMvcListItem extends HTMLElement {
 
         this.querySelector('li div.view input').addEventListener('click', event => {
             this.toggleTodoItemStatus(event);
+        });
+
+        this.querySelector('li div.view button').addEventListener('click', event => {
+            this.deleteTodo(event);
         });
     }
 }

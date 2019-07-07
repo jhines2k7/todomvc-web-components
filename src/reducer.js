@@ -15,12 +15,16 @@ export default function reduce(events) {
             state.filter = event.data;
         }
 
-        if(event.topic === 'app.todo.status-change') {
+        if(event.topic === 'app.todo.status-changed') {
             state.todos.map((todo) => {
                if(event.data.id === todo.id) {
                    todo.status = event.data.status;
                }
             });
+        }
+
+        if(event.topic === 'app.todo.deleted') {
+            state.todos = state.todos.filter(todo => todo.id !== event.data.id);
         }
 
         return state;

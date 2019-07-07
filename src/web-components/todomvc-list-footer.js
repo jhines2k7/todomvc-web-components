@@ -22,7 +22,9 @@ class TodoMvcListFooter extends HTMLElement {
 
         this.render(numItemsLeft);
 
-        this.subscribe('app-msg-bus', 'app.todo.status-change');
+        this.subscribe('app-msg-bus', 'app.todo.status-changed');
+        this.subscribe('app-msg-bus', 'app.todo.created');
+        this.subscribe('app-msg-bus', 'app.todo.deleted');
     }
 
     set itemsLeft(itemsLeft) {
