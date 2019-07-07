@@ -19,7 +19,9 @@
   "homepage": "https://github.com/jhines2k7/todomvc-web-components#readme",
   "dependencies": {
     "localforage": "^1.7.3",
-    "postal": "^2.0.5"
+    "postal": "^2.0.5",
+    "todomvc-app-css": "^2.0.0",
+    "todomvc-common": "^1.0.0"
   },
   "devDependencies": {
     "html-loader": "^0.5.5",
