@@ -1,3 +1,5 @@
+import './todomvc-list-item';
+
 class TodoMvcTodoList extends HTMLElement {
     constructor() {
         super();
@@ -18,15 +20,8 @@ class TodoMvcTodoList extends HTMLElement {
                 <input class="toggle-all" type="checkbox">
                 <label for="toggle-all">Mark all as complete</label>
                 <ul class="todo-list">
-                   
-                    <li>
-                        <div class="view">
-                            <input class="toggle" type="checkbox">
-                            <label>Buy a unicorn</label>
-                            <button class="destroy"></button>
-                        </div>
-                        <input class="edit" value="Rule the web">
-                    </li>
+                    <todomvc-list-item></todomvc-list-item>
+                    <todomvc-list-item></todomvc-list-item>
                 </ul>
             </section>
         `;

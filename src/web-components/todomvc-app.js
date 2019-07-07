@@ -1,3 +1,6 @@
+import './todomvc-todo-list';
+import './todomvc-list-footer';
+
 class TodoMvcApp extends HTMLElement {
     constructor() {
         super();

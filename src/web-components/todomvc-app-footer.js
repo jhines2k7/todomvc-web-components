@@ -1,4 +1,4 @@
-class TodomvcAppFooter extends HTMLElement {
+class TodoMvcAppFooter extends HTMLElement {
     constructor() {
         super();
     }
@@ -17,4 +17,4 @@ class TodomvcAppFooter extends HTMLElement {
     }
 }
 
-customElements.define('todomvc-footer', TodomvcAppFooter);
+customElements.define('todomvc-app-footer', TodoMvcAppFooter);
