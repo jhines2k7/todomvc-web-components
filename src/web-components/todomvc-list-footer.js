@@ -1,15 +1,53 @@
+import EventLog from '../eventLog'
+import postal from 'postal/lib/postal.lodash'
+import reduce from '../reducer'
+
 class TodoMvcListFooter extends HTMLElement {
     constructor() {
         super();
+
+        this.eventLog = new EventLog();
     }
 
     connectedCallback() {
-        this.render(2);
+        let state = reduce(this.eventLog.events);
+
+        let numItemsLeft = state.todos.reduce( (itemsLeft, todo ) => {
+            if(todo.status !== 'completed') {
+                itemsLeft++;
+            }
+
+            return itemsLeft;
+        }, 0);
+
+        this.render(numItemsLeft);
+
+        this.subscribe('app-msg-bus', 'app.todo.status-change');
     }
 
     set itemsLeft(itemsLeft) {
         this.render(itemsLeft);
     }
+
+    subscribe(channel, topic) {
+        return postal.subscribe({
+            channel: channel,
+            topic: topic,
+            callback: (data, envelope) => {
+                let state = reduce(this.eventLog.events);
+
+                let numItemsLeft = state.todos.reduce( (itemsLeft, todo ) => {
+                    if(todo.status !== 'completed') {
+                        itemsLeft++;
+                    }
+
+                    return itemsLeft;
+                }, 0);
+
+                this.render(numItemsLeft);
+            }
+        });
+    };
 
     render(itemsLeft) {
         this.innerHTML = `
