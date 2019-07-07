@@ -10,6 +10,8 @@ class TodoMvcApp extends HTMLElement {
                     <h1>todos</h1>
                     <input class="new-todo" placeholder="What needs to be done?" autofocus>
                 </header>
+                <todomvc-todo-list></todomvc-todo-list>
+                <todomvc-list-footer></todomvc-list-footer>
             </section>
         `;
     }

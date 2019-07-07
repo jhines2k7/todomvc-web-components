@@ -15,9 +15,7 @@ window.addEventListener('load', () => {
 
         const todoMvcApp = document.createElement('todomvc-app');
 
-        const todoMvcTodoList = document.createElement('todomvc-todo-list');
-
-        const todoMvcAppFooter = document.createElement('todomvc-app-footer');
+        const todoList = document.querySelector('todo-list');
 
         const todoListItem1 = document.createElement('todomvc-list-item');
         todoListItem1.todo = {};
@@ -25,8 +23,8 @@ window.addEventListener('load', () => {
         const todoListItem2 = document.createElement('todomvc-list-item');
         todoListItem2.todo = {};
 
-        todoMvcTodoList.appendChild(todoListItem1);
-        todoMvcTodoList.appendChild(todoListItem2);
+        todoList.appendChild(todoListItem1);
+        todoList.appendChild(todoListItem2);
 
         // let todos = [];
 
@@ -36,11 +34,6 @@ window.addEventListener('load', () => {
         //
         //     todoMvcTodoList.appendChild(todoMvcTodoList);
         // });
-
-        const todoMvcListFooter = document.createElement('todomvc-list-footer');
-
-        todoMvcApp.appendChild(todoMvcTodoList);
-        todoMvcApp.appendChild(todoMvcListFooter);
 
         main.appendChild(todoMvcApp);
         main.appendChild(todoMvcAppFooter);
