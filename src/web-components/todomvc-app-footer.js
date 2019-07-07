@@ -1,7 +1,4 @@
-import postal from 'postal/lib/postal.lodash'
-import reduce from '../reducer'
-
-class TodoMvcFooter extends HTMLElement {
+class TodomvcAppFooter extends HTMLElement {
     constructor() {
         super();
     }
@@ -20,4 +17,4 @@ class TodoMvcFooter extends HTMLElement {
     }
 }
 
-customElements.define('todomvc-footer', TodoMvcFooter);
+customElements.define('todomvc-footer', TodomvcAppFooter);

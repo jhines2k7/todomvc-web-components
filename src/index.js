@@ -1,4 +1,6 @@
-import './web-components/todomvc-footer';
+import './web-components/todomvc-app';
+import './web-components/todomvc-todo-list';
+import './web-components/todomvc-list-item';
 import EventLog from './eventLog';
 import Storage from './storage'
 import reduce from "./reducer";
@@ -11,8 +13,36 @@ window.addEventListener('load', () => {
 
         const main = document.querySelector('main');
 
-        const footer = document.createElement('todomvc-footer');
+        const todoMvcApp = document.createElement('todomvc-app');
 
-        main.appendChild(footer);
+        const todoMvcTodoList = document.createElement('todomvc-todo-list');
+
+        const todoMvcAppFooter = document.createElement('todomvc-app-footer');
+
+        const todoListItem1 = document.createElement('todomvc-list-item');
+        todoListItem1.todo = {};
+
+        const todoListItem2 = document.createElement('todomvc-list-item');
+        todoListItem2.todo = {};
+
+        todoMvcTodoList.appendChild(todoListItem1);
+        todoMvcTodoList.appendChild(todoListItem2);
+
+        // let todos = [];
+
+        // todos.forEach(todo => {
+        //     const todoListItem = document.createElement('todomvc-list-item');
+        //     todoListItem.todo = todo;
+        //
+        //     todoMvcTodoList.appendChild(todoMvcTodoList);
+        // });
+
+        const todoMvcListFooter = document.createElement('todomvc-list-footer');
+
+        todoMvcApp.appendChild(todoMvcTodoList);
+        todoMvcApp.appendChild(todoMvcListFooter);
+
+        main.appendChild(todoMvcApp);
+        main.appendChild(todoMvcAppFooter);
     });
 });
