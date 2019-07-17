@@ -13,6 +13,7 @@ class TodoMvcApp extends HTMLElement {
         this.subscribe('app-msg-bus', 'app.todos.loaded');
         this.subscribe('app-msg-bus', 'app.todo.deleted');
         this.subscribe('app-msg-bus', 'app.todo.created');
+        this.subscribe('app-msg-bus', 'app.todo.toggle-all-complete');
     }
 
     connectedCallback() {

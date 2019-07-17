@@ -1,2 +1,20 @@
 @import "~todomvc-app-css/index.css";
 @import "~todomvc-common/base.css";
+
+.toggle-all + todomvc-toggle-all label {
+    width: 60px;
+    height: 34px;
+    font-size: 0;
+    position: absolute;
+    top: -52px;
+    left: -13px;
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+.toggle-all + todomvc-toggle-all label:before {
+    content: '❯';
+    font-size: 22px;
+    color: #e6e6e6;
+    padding: 10px 27px 10px 27px;
+}

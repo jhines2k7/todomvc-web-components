@@ -34,6 +34,8 @@ export default function reduce(events) {
                 } else {
                     todo.status = 'completed';
                 }
+
+                return todo;
             });
         }
 
