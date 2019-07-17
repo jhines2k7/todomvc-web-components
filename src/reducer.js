@@ -16,7 +16,7 @@ export default function reduce(events) {
         }
 
         if(event.topic === 'app.todo.status-changed') {
-            state.todos.map((todo) => {
+            state.todos = state.todos.map((todo) => {
                if(event.data.id === todo.id) {
                    todo.status = event.data.status;
                }
@@ -25,6 +25,16 @@ export default function reduce(events) {
 
         if(event.topic === 'app.todo.deleted') {
             state.todos = state.todos.filter(todo => todo.id !== event.data.id);
+        }
+
+        if(event.topic === 'app.todo.toggle-all-complete') {
+            state.todos = state.todos.map((todo) => {
+                if(todo.status === 'completed') {
+                    todo.status = '';
+                } else {
+                    todo.status = 'completed';
+                }
+            });
         }
 
         return state;

@@ -11,6 +11,7 @@ class TodoMvcTodoList extends HTMLElement {
         this.subscribe('app-msg-bus', 'app.todo.created');
         this.subscribe('app-msg-bus', 'app.todos.loaded');
         this.subscribe('app-msg-bus', 'app.todo.deleted');
+        this.subscribe('app-msg-bus', 'app.todo.toggle-all-complete');
     }
 
     connectedCallback() {
@@ -22,6 +23,10 @@ class TodoMvcTodoList extends HTMLElement {
                 <ul class="todo-list"></ul>
             </section>
         `;
+
+        this.querySelector('section.main label').addEventListener('click', event => {
+            this.toggleAllComplete(event);
+        });
     }
 
     subscribe(channel, topic) {
@@ -48,6 +53,14 @@ class TodoMvcTodoList extends HTMLElement {
             }
         });
     };
+
+    toggleAllComplete(event) {
+        this.eventLog.add(this.eventLog.events, [{
+            channel: 'app-msg-bus',
+            topic: 'app.todo.toggle-all-complete',
+            data: {}
+        }]);
+    }
 
     set todos(todos) {
         todos.forEach(todo => {
