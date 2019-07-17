@@ -1,4 +1,11 @@
+import EventLog from "../eventLog";
+
 class TodoMvcToggleLabel extends HTMLElement {
+    constructor() {
+        super();
+
+        this.eventLog = new EventLog();
+    }
     connectedCallback() {
         this.innerHTML = `
             <label for="toggle-all">Mark all as complete</label>

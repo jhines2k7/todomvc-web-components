@@ -45,8 +45,15 @@ class TodoMvcApp extends HTMLElement {
             }]);
 
             input.value = '';
-            input.focus();
         }
+    }
+
+    focusInput(event) {
+        let input = document.querySelector('section.todoapp header input.new-todo');
+
+        window.setTimeout(() => {
+            input.focus();
+        }, 0);
     }
 
     subscribe(channel, topic) {
@@ -74,6 +81,10 @@ class TodoMvcApp extends HTMLElement {
 
         this.querySelector('section.todoapp header input.new-todo').addEventListener('keyup', event => {
             this.createNewTodo(event);
+        });
+
+        this.querySelector('section.todoapp header input.new-todo').addEventListener('blur', event => {
+            this.focusInput(event);
         });
 
         if(numTodos > 0) {

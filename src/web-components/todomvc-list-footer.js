@@ -12,7 +12,7 @@ class TodoMvcListFooter extends HTMLElement {
     connectedCallback() {
         let state = reduce(this.eventLog.events);
 
-        let numItemsLeft = state.todos.reduce( (itemsLeft, todo ) => {
+        let numItemsLeft = state.todos.reduce((itemsLeft, todo) => {
             if(todo.status !== 'completed') {
                 itemsLeft++;
             }

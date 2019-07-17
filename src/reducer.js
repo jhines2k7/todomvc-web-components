@@ -20,6 +20,8 @@ export default function reduce(events) {
                if(event.data.id === todo.id) {
                    todo.status = event.data.status;
                }
+
+               return todo;
             });
         }
 

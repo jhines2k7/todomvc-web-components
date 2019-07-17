@@ -48,9 +48,11 @@ class TodoMvcTodoList extends HTMLElement {
                         todoList.appendChild(todoListItem);
                     });
 
-                    const todoListToggleAll = document.createElement('todomvc-toggle-all');
+                    if(document.getElementsByTagName('todomvc-toggle-all').length === 0) {
+                        const todoListToggleAll = document.createElement('todomvc-toggle-all');
+                        todoList.parentNode.insertBefore(todoListToggleAll, todoList);
+                    }
 
-                    todoList.parentNode.insertBefore(todoListToggleAll, todoList);
                 }
             }
         });
@@ -67,9 +69,10 @@ class TodoMvcTodoList extends HTMLElement {
                 todoList.appendChild(todoListItem);
             });
 
-            const todoListToggleAll = document.createElement('todomvc-toggle-all');
-
-            todoList.parentNode.insertBefore(todoListToggleAll, todoList);
+            if(document.getElementsByTagName('todomvc-toggle-all').length === 0) {
+                const todoListToggleAll = document.createElement('todomvc-toggle-all');
+                todoList.parentNode.insertBefore(todoListToggleAll, todoList);
+            }
         }
     }
 }
