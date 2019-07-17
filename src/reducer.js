@@ -30,12 +30,17 @@ export default function reduce(events) {
         }
 
         if(event.topic === 'app.todo.toggle-all-complete') {
+            let status = '';
+
+            if(event.data.toggleAll) {
+                status = 'completed';
+                state.toggleAll = true;
+            } else {
+                state.toggleAll = false;
+            }
+
             state.todos = state.todos.map((todo) => {
-                if(todo.status === 'completed') {
-                    todo.status = '';
-                } else {
-                    todo.status = 'completed';
-                }
+                todo.status = status;
 
                 return todo;
             });
@@ -44,6 +49,7 @@ export default function reduce(events) {
         return state;
     }, {
         todos: [],
-        filter: 'all'
+        filter: 'all',
+        toggleAll: false
     })
 }
