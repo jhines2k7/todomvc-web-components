@@ -1,6 +1,7 @@
 import EventLog from '../eventLog'
 import postal from 'postal/lib/postal.lodash'
 import reduce from '../reducer'
+import './todomvc-clear-completed-button';
 
 class TodoMvcListFooter extends HTMLElement {
     constructor() {
@@ -19,6 +20,8 @@ class TodoMvcListFooter extends HTMLElement {
 
             return itemsLeft;
         }, 0);
+
+        let anyCompletedItems = state.todos.find(todo => todo.status === 'completed');
 
         this.render(numItemsLeft);
 
@@ -56,20 +59,20 @@ class TodoMvcListFooter extends HTMLElement {
             <footer class="footer">
                 <!-- This should be \`0 items left\` by default -->
                 <span class="todo-count"><strong>${itemsLeft}</strong> item${itemsLeft === 1 ? '' : 's'} left</span>
-                    <!-- Remove this if you don't implement routing -->
-                    <ul class="filters">
-                        <li>
-                            <a class="selected" href="#/">All</a>
-                        </li>
-                        <li>
-                            <a href="#/active">Active</a>
-                        </li>
-                        <li>
-                            <a href="#/completed">Completed</a>
-                        </li>
-                    </ul>
+                <!-- Remove this if you don't implement routing -->
+                <ul class="filters">
+                    <li>
+                        <a class="selected" href="#/">All</a>
+                    </li>
+                    <li>
+                        <a href="#/active">Active</a>
+                    </li>
+                    <li>
+                        <a href="#/completed">Completed</a>
+                    </li>
+                </ul>
                 <!-- Hidden if no completed items are left ↓ -->
-                <button class="clear-completed">Clear completed</button>
+                <todomvc-clear-completed></todomvc-clear-completed>
             </footer>
         `;
     }
